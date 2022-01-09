@@ -47,6 +47,15 @@ const Input = styled.input`
   margin: 10px 0;
   font-size: 20px;
   padding: 10px;
+  border-style: solid;
+    border-color: black;
+  border-width: 2px;
+    border-radius: 4.5%;
+    transition: all 0.5s ease;
+  &:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+  }
 `;
 
 const Button = styled.button`
