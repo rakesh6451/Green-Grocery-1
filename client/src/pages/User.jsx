@@ -140,8 +140,11 @@ import { publicRequest } from "../requestMethods";
                   <label htmlFor="file">
                     <Publish className="userUpdateIcon" />
                   </label>
+                  <form action="/upload" method="POST" enctype="multipart/form-data">
                   <input type="file" id="file" style={{ display: "none" }} />
-                </div>
+                  <button type="submit" class="btn">Submit</button>
+                  </form>
+              </div>
               </div>
             </form>
           </div>

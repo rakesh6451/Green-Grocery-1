@@ -11,6 +11,7 @@ import { publicRequest,userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../redux/apiCalls";
+import { delCart } from "../redux/cartRedux";
 
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -44,13 +45,13 @@ const Top = styled.div`
 `;
 
 const TopButton = styled.button`
-padding: 10px;
-font-weight: 600;
-cursor: pointer;
-border: ${(props) => props.type === "filled" && "none"};
-background-color: ${(props) =>
-  props.type === "filled" ? "black" : "transparent"};
-color: ${(props) => props.type === "filled" && "white"};
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
 `;
 
 // const TopTexts = styled.div`
@@ -193,6 +194,12 @@ const Cart = () => {
     setStripeToken(token);
   };
 
+  const delClick = () => {
+    dispatch(
+      delCart()
+    );
+  };
+
   useEffect(() => {
     
     const makeRequest2 = async () => {
@@ -228,12 +235,12 @@ const Cart = () => {
     // const makeRequest = async () => {
       
     // };
-    const dCart = async () => {
-      // const res = await makeRequest2();
-      // const res2 = await makeRequest();
-
+    // const dCart = async () => {
+    //   // const res = await makeRequest2();
+    //   // const res2 = await makeRequest();
+    //   clearCart(dispatch);
       
-    };
+    // };
     stripeToken && makeRequest2(); 
     // makeRequest();
     console.log(cart);
@@ -249,7 +256,11 @@ const Cart = () => {
         <Top>
           <Link to="/">
           <TopButton type="filled">CONTINUE SHOPPING</TopButton>
+          {/* <Button >Del TO CART</Button> */}
           </Link>
+          <TopButton type="filled" onClick={delClick}>Delete Cart</TopButton>
+
+          {/* <Button onClick={dCart}>CHECKOUT NOW</Button> */}
           {/* <TopTexts>
             <TopText>Shopping Bag(0)</TopText>
             <TopText>Your Wishlist (0)</TopText>

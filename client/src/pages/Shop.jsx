@@ -74,15 +74,15 @@ const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
 
-    padding: 10px;
-    color:white;
-    cursor: pointer;
-    font-weight: 600;
-    border-style: solid;
-    border-color: coral;
+  padding: 10px;
+  color:white;
+  cursor: pointer;
+  font-weight: 600;
+  border-style: solid;
+  border-color: coral;
   border-width: 2px;
-    border-radius: 5%;
-    transition: all 0.5s ease;
+  border-radius: 5%;
+  transition: all 0.5s ease;
   &:hover {
     background-color: coral;
     transform: scale(1.1);
@@ -151,7 +151,7 @@ const Shop = () => {
         totalPosts={posts.length}
         paginate={paginate}
       />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Footer />
     </Container>
   );

@@ -5,6 +5,12 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+
 
 const Info = styled.div`
   opacity: 0;
@@ -71,15 +77,57 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
+const Button = styled.button`
+  padding: 15px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #f8f4f4;
+  }
+`;
 
 const Product = ({ item }) => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(
+      addProduct({ ...product, quantity, color, size })
+    );
+  };
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
         <Icon>
-          <ShoppingCartOutlined />
+          <ShoppingCartOutlined onClick={handleClick}/>
         </Icon>
         <Icon>
           <Link to={`/product/${item._id}`}>
@@ -87,7 +135,8 @@ const Product = ({ item }) => {
           </Link>
         </Icon>
         <Icon>
-          <FavoriteBorderOutlined />
+          <FavoriteBorderOutlined/>
+          {/* <Button onClick={handleClick}>ADD TO CART</Button> */}
         </Icon>
       </Info>
     </Container>

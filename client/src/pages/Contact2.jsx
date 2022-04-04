@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
+// import Newsletter from "../components/Newsletter";
 // import styled from "styled-components";
 import "./contact.css";
 
@@ -65,7 +65,7 @@ const Contact = () => {
   </div>
 </body1>
     
-    <Newsletter/>
+    {/* <Newsletter/> */}
     <Footer/>
   </div>
 

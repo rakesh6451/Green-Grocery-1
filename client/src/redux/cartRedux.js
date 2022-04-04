@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   reducers: {
     addProduct: (state, action) => {
       // const list = state.cart.foreach(product => console.log(product));
-      // console.log(cart);
+      console.log(action);
       
       state.quantity += 1;
       state.products.push(action.payload);
@@ -21,8 +21,8 @@ const cartSlice = createSlice({
       state.quantity = 0;
       while(state.products.length > 0) {
         state.products.pop();
-    }
-      // state.products = [];
+      }
+      // state.products = []; 
       state.total = 0;
     },
   },

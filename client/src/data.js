@@ -1,7 +1,7 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://coolwallpapers.me/picsup/5465402-vegetables-wallpapers.jpg",
+      img: "https://i.pinimg.com/originals/6c/0c/85/6c0c85ceacd04bfcf95027ca7ec8c824.png",
       title: "Vegetable Products Discount",
       desc: "DON'T COMPROMISE ON VEGETABLES! GET FRESH PRODUCTS.",
       bg: "fbf0f4",

@@ -8,7 +8,7 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/cartRedux";
+import { addProduct, delCart } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
@@ -90,6 +90,7 @@ const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   ${mobile({ width: "100%" })}
+  cursor: pointer;
 `;
 
 const AmountContainer = styled.div`
@@ -150,9 +151,14 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(
-      addProduct({ ...product, quantity, color, size })
+      addProduct({ ...product, id, quantity, color, size })
     );
   };
+  // const delClick = () => {
+  //   dispatch(
+  //     delCart()
+  //   );
+  // };
   return (
     <Container>
       <Navbar />
@@ -181,10 +187,12 @@ const Product = () => {
               <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
+            {/* <Button onClick={delClick}>Del TO CART</Button> */}
+
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Footer />
     </Container>
   );
