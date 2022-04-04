@@ -50,7 +50,10 @@ https://nodejs.org/en/.
   - MONGO_URL: For connecting to the MongoDB collection.
   - PASS_SEC = This is used for encrypting the password and can be named anything. 
   - JWT_SEC = This will be used for initialization of JWT Token and can be named anything as per convenience.
-  - STRIPE_KEY= Here, the url of the stripe key must be provided.
+  - STRIPE_KEY = Here, the url of the stripe key must be provided.
+  - CLOUD_NAME = This is the cloud name used for cloudinary.
+  - CLOUDINARY_API_KEY = This is the api key used for cloudinary.
+  - CLOUDINARY_API_SECRET = This is the api secret key of cloudinary account 
 
 ★ Now, we have to install several dependencies.
 
